@@ -2,23 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* style scrollbar */
-.prompt::-webkit-scrollbar {
-  width: 1px !important;
-}
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
 
-.prompt::-webkit-scrollbar-thumb {
-  background-color: rgb(6, 117, 95);
-  border-radius: 10px;
-}
-
-@media (max-width: 500px) {
-  .prompt::-webkit-scrollbar {
-    display: none;
-  }
-
-  .prompt {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
