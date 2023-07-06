@@ -3,15 +3,15 @@ const bcrypt = require("bcryptjs");
 
 const registerUser = async (req, res) => {
   // check we have details from frontend
-  const { displayName, email, password } = req.body;
+  const { username, email, profile, gender, password } = req.body;
 
-  if (!displayName || !email || !password) {
+  if (!username || !email || !password || !profile || !gender) {
     res.status(400).json({ message: "Some details are missing" });
     console.log(req.body);
     return;
   }
   // check if user exists in db
-  const userExists = await User.findOne({ displayName });
+  const userExists = await User.findOne({ username });
   if (userExists) {
     return res.status(400).send("exists");
   }
@@ -23,17 +23,20 @@ const registerUser = async (req, res) => {
 
   // create user
   const user = await User.create({
-    displayName,
+    username,
     email,
+    gender,
+    profile,
     password: hashedPassword,
   });
 
   if (user) {
     res.status(201).json({
       _id: user.id,
-      displayName: user.displayName,
+      username: user.username,
       email: user.email,
-
+      gender: user.gender,
+      profile: user.profile,
       createdAt: user.createdAt,
     });
   } else {
@@ -44,21 +47,21 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   // check if details were sent
-  const { email, password } = req.body;
-  if (!email || !password) {
+  const { username, password } = req.body;
+  if (!username || !password) {
     res.status(400).json({ message: "Details missing" });
     return;
   }
   // check if user exists
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ username });
 
   if (user && (await bcrypt.compare(password, user.password))) {
     res.json({
       _id: user.id,
-      displayName: user.displayName,
+      username: user.username,
       email: user.email,
-      // isAdmin: user.isAdmin,
-
+      gender: user.gender,
+      profile: user.profile,
       createdAt: user.createdAt,
     });
   } else {
@@ -95,10 +98,10 @@ const fetchAllUsers = async (req, res, next) => {
 
 // API that checks if sent user exists
 const checkIfUserAlreadyExists = async (req, res) => {
-  const { displayName } = req.body;
+  const { username } = req.body;
 
   try {
-    const userExists = await User.findOne({ displayName });
+    const userExists = await User.findOne({ username });
     if (userExists) {
       let exists = "exists";
       return res.status(200).send(exists);
@@ -123,6 +126,16 @@ const updateMyAccount = async (req, res) => {
   }
 };
 
+const deleteMyAccount = async (req, res) => {
+  try {
+    await User.findByIdAndDelete(req.params.id);
+
+    res.status(200).send(req.params.id + "deleted");
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
+
 module.exports = {
   registerUser,
   loginUser,
@@ -130,4 +143,5 @@ module.exports = {
   fetchAllUsers,
   updateMyAccount,
   checkIfUserAlreadyExists,
+  deleteMyAccount,
 };
