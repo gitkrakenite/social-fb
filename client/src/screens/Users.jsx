@@ -2,6 +2,8 @@ import Masonry from "react-masonry-css";
 import "./masonry.css";
 import { useState } from "react";
 import {
+  AiOutlineEye,
+  AiOutlineLike,
   AiOutlineMessage,
   AiOutlineSearch,
   AiOutlineUsergroupAdd,
@@ -190,7 +192,9 @@ const Users = () => {
             </form>
           </div>
           <div className="flex items-center gap-[14px] sm:gap-[34px]">
-            <AiOutlineMessage className="text-4xl" />
+            <Link to="/chats">
+              <AiOutlineMessage className="text-4xl" />
+            </Link>
             <AiOutlineUsergroupAdd className="text-4xl" />
             <img
               src="https://images.pexels.com/photos/2092450/pexels-photo-2092450.jpeg?auto=compress&cs=tinysrgb&w=1600"
@@ -346,11 +350,29 @@ const Users = () => {
                             <Link to={`/user/${item.id}`}>
                               <div className="relative rounded-lg group">
                                 <div className="overlay absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                  <div className="bg-gradient-to-b from-transparent to-black opacity-75 w-full h-full rounded-md">
+                                  <div
+                                    className="bg-gradient-to-t
+                                  from-transparent to-black opacity-75 w-full h-full rounded-md"
+                                  >
+                                    {/* top stats */}
+                                    <div className="absolute top-[20px] flex gap-[10%] right-4 w-full justify-end ">
+                                      <div className="flex gap-[20px]">
+                                        <p className="text-white text-md flex items-center gap-[5px]">
+                                          <AiOutlineEye className="text-lg" />
+                                          <span>22</span>
+                                        </p>
+                                        <p className="text-white text-md flex items-center gap-[5px]">
+                                          <AiOutlineMessage className="text-lg" />
+                                          <span>13</span>
+                                        </p>
+                                        <p className="text-white text-md flex items-center gap-[5px]">
+                                          <AiOutlineLike className="text-lg" />
+                                          <span>343</span>
+                                        </p>
+                                      </div>
+                                    </div>
+                                    {/*  */}
                                     <div className="absolute bottom-[20px] left-[20px]  flex gap-[10%] w-full ">
-                                      {/* <p className="text-white text-md ">
-                                      {item.username}
-                                    </p> */}
                                       <div className="flex gap-[10px]">
                                         <p className="text-white text-md ">
                                           {`${item.caption?.substring(

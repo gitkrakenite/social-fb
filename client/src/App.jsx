@@ -6,15 +6,17 @@ import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Users from "./screens/Users";
 import SingleUser from "./screens/SingleUser";
+import Chats from "./screens/Chats";
 
 function App() {
   return (
-    <div className="w-full min-h-[100vh] overflow-y-scroll bg-zinc-300 text-zinc-800">
+    <div className="w-full min-h-[100vh] bg-zinc-300 text-zinc-800">
       <BrowserRouter>
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Users />} />
+          <Route path="/chats" element={<Chats />} />
           <Route path="/user/:id" element={<SingleUser />} />
         </Routes>
       </BrowserRouter>
