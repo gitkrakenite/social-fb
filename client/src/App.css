@@ -1,0 +1,18 @@
+.dmBtn {
+  background: rgb(165, 52, 71);
+  color: white;
+  padding: 0.8em 2.4em 0.8em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.dmBtn:hover {
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background: transparent;
+  border: 2px solid rgb(165, 52, 71);
+  color: rgb(148, 63, 77);
+}
