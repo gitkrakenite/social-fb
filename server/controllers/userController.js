@@ -3,18 +3,9 @@ const bcrypt = require("bcryptjs");
 
 const registerUser = async (req, res) => {
   // check we have details from frontend
-  const { username, email, profile, gender, password, admNo, caption } =
-    req.body;
+  const { username, email, profile, gender, password, caption } = req.body;
 
-  if (
-    !username ||
-    !email ||
-    !password ||
-    !profile ||
-    !gender ||
-    !admNo ||
-    !caption
-  ) {
+  if (!username || !email || !password || !profile || !gender || !caption) {
     res.status(400).json({ message: "Some details are missing" });
     console.log(req.body);
     return;
@@ -36,7 +27,6 @@ const registerUser = async (req, res) => {
     email,
     gender,
     profile,
-    admNo,
     caption,
     password: hashedPassword,
   });
@@ -48,7 +38,7 @@ const registerUser = async (req, res) => {
       email: user.email,
       gender: user.gender,
       profile: user.profile,
-      admNo: user.admNo,
+
       caption: user.caption,
       createdAt: user.createdAt,
     });
@@ -75,7 +65,7 @@ const loginUser = async (req, res) => {
       email: user.email,
       gender: user.gender,
       profile: user.profile,
-      admNo: user.admNo,
+
       caption: user.caption,
       createdAt: user.createdAt,
     });

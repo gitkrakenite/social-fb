@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Users from "./screens/Users";
+import SingleUser from "./screens/SingleUser";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Users />} />
+          <Route path="/user/:id" element={<SingleUser />} />
         </Routes>
       </BrowserRouter>
 

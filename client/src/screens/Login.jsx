@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -51,7 +52,10 @@ const Login = () => {
           </button>
         </form>
         <div className="flex justify-between mt-[8px]">
-          <p className="underline">Are You New Here</p>
+          <Link to="/register">
+            <p className="underline">Are You New Here</p>
+          </Link>
+
           <a
             href="mailto:daysseller@gmail.com"
             className="hover:text-pink-600 underline"

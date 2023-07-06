@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -9,6 +10,7 @@ const Register = () => {
   const [cpassword, setCPassword] = useState("");
   const [gender, setGender] = useState("");
   const [profile, setProfile] = useState("");
+  const [caption, setCaption] = useState("");
   const [email, setEmail] = useState("");
 
   const [showPass, setShowPass] = useState(false);
@@ -50,7 +52,7 @@ const Register = () => {
           </div>
           <div className="flex flex-col gap-[10px] mb-[20px]">
             <label htmlFor="email" className="font-bold text-lg">
-              Enter Your Email
+              Enter Your Student Email
             </label>
             <input
               type="email"
@@ -62,6 +64,22 @@ const Register = () => {
               maxLength={18}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col gap-[10px] mb-[20px]">
+            <label htmlFor="caption" className="font-bold text-lg">
+              Add A Caption
+            </label>
+            <input
+              type="text"
+              placeholder="i.e #thee greatest in the planet"
+              className="bg-transparent border-2 border-slate-600 rounded-xl p-[8px] outline-none"
+              required
+              id="caption"
+              minLength={3}
+              maxLength={65}
+              value={caption}
+              onChange={(e) => setCaption(e.target.value)}
             />
           </div>
           <div className="flex flex-col gap-[10px] mb-[20px]">
@@ -152,7 +170,9 @@ const Register = () => {
           </button>
         </form>
         <div className="flex justify-between mt-[8px]">
-          <p className="underline">Already Have Account</p>
+          <Link to="/login">
+            <p className="underline">Already Have Account</p>
+          </Link>
           <a
             href="mailto:daysseller@gmail.com"
             className="hover:text-pink-600 underline"

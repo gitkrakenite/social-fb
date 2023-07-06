@@ -8,6 +8,7 @@ import {
 } from "react-icons/ai";
 import { FiArrowUpRight } from "react-icons/fi";
 import Spinner from "../components/Spinner";
+import { Link } from "react-router-dom";
 
 const Users = () => {
   const breakpointColumnsObj = {
@@ -230,32 +231,37 @@ const Users = () => {
                           key={item._id}
                           className="image-container mb-[18px]"
                         >
-                          <div className="relative rounded-lg group">
-                            <div className="overlay absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                              <div className="bg-gradient-to-b from-transparent to-black opacity-75 w-full h-full rounded-md">
-                                <div className="absolute bottom-[20px] left-[20px]  flex gap-[10%] w-full ">
-                                  {/* <p className="text-white text-md ">
-                                    {item.username}
-                                  </p> */}
-                                  <div className="flex gap-[10px]">
-                                    <p className="text-white text-md ">
-                                      {`${item.caption?.substring(0, 18)} ...`}
-                                    </p>
-                                    <p>
-                                      {" "}
-                                      <FiArrowUpRight className="text-zinc-500 text-2xl mb-[20px]" />
-                                    </p>
+                          <Link to={`/user/${item.id}`}>
+                            <div className="relative rounded-lg group">
+                              <div className="overlay absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                <div className="bg-gradient-to-b from-transparent to-black opacity-75 w-full h-full rounded-md">
+                                  <div className="absolute bottom-[20px] left-[20px]  flex gap-[10%] w-full ">
+                                    {/* <p className="text-white text-md ">
+                                      {item.username}
+                                    </p> */}
+                                    <div className="flex gap-[10px]">
+                                      <p className="text-white text-md ">
+                                        {`${item.caption?.substring(
+                                          0,
+                                          18
+                                        )} ...`}
+                                      </p>
+                                      <p>
+                                        {" "}
+                                        <FiArrowUpRight className="text-zinc-500 text-2xl mb-[20px]" />
+                                      </p>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
 
-                            <img
-                              src={item.profile}
-                              alt=""
-                              className="w-full rounded-md object-cover"
-                            />
-                          </div>
+                              <img
+                                src={item.profile}
+                                alt=""
+                                className="w-full rounded-md object-cover"
+                              />
+                            </div>
+                          </Link>
                         </div>
                       ))}
                     </Masonry>
@@ -337,35 +343,37 @@ const Users = () => {
                             key={item._id}
                             className="image-container mb-[18px]"
                           >
-                            <div className="relative rounded-lg group">
-                              <div className="overlay absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                <div className="bg-gradient-to-b from-transparent to-black opacity-75 w-full h-full rounded-md">
-                                  <div className="absolute bottom-[20px] left-[20px]  flex gap-[10%] w-full ">
-                                    {/* <p className="text-white text-md ">
+                            <Link to={`/user/${item.id}`}>
+                              <div className="relative rounded-lg group">
+                                <div className="overlay absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                  <div className="bg-gradient-to-b from-transparent to-black opacity-75 w-full h-full rounded-md">
+                                    <div className="absolute bottom-[20px] left-[20px]  flex gap-[10%] w-full ">
+                                      {/* <p className="text-white text-md ">
                                       {item.username}
                                     </p> */}
-                                    <div className="flex gap-[10px]">
-                                      <p className="text-white text-md ">
-                                        {`${item.caption?.substring(
-                                          0,
-                                          18
-                                        )} ...`}
-                                      </p>
-                                      <p>
-                                        {" "}
-                                        <FiArrowUpRight className="text-zinc-500 text-2xl mb-[20px]" />
-                                      </p>
+                                      <div className="flex gap-[10px]">
+                                        <p className="text-white text-md ">
+                                          {`${item.caption?.substring(
+                                            0,
+                                            18
+                                          )} ...`}
+                                        </p>
+                                        <p>
+                                          {" "}
+                                          <FiArrowUpRight className="text-zinc-500 text-2xl mb-[20px]" />
+                                        </p>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
 
-                              <img
-                                src={item.profile}
-                                alt=""
-                                className="w-full rounded-md object-cover"
-                              />
-                            </div>
+                                <img
+                                  src={item.profile}
+                                  alt=""
+                                  className="w-full rounded-md object-cover"
+                                />
+                              </div>
+                            </Link>
                           </div>
                         ))}
                       </Masonry>
