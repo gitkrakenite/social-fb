@@ -1,0 +1,17 @@
+.myMessage {
+  background-color: rgb(9, 131, 84);
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.receivedMessages {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
